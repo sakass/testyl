@@ -1,0 +1,31 @@
+<% if @stocks.blank? %>
+<p>Pole yhtegi aksiat lisatud.</p>
+<% else %>
+<ul id="stocks">
+<% @stocks.each do |c| %>
+<li><%= link_to c.title, {:action => 'show', :id => c.id} -%></li>
+<% end %>
+</ul>
+<% end %>
+<% form_tag :action => 'create'  do %>
+<p><label for="stock_title">aktsia nimi</label>:
+<%= text_field 'stock', 'title' %></p>
+
+<p><label for="stock_price">Hind</label>:
+<%= text_field 'stock', 'price' %></p>
+
+<p><label for="stock_quantity">kogus</label>:
+<%= text_field 'stock', 'quantity' %></p>
+
+<p><label for="stock_percent">protsent</label>:
+<%= text_field 'stock', 'percent' %></p>
+
+<p><label for="stock_years">aastad</label>:
+<%= text_field 'stock', 'years' %></p>
+
+<%= submit_tag "Create" %>
+
+<% end  %>
+
+
+

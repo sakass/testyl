@@ -1,0 +1,16 @@
+<h1><%= @stock.title %></h1>
+<p><strong>Hind: </strong> $<%= @stock.price %><br /></p>
+<strong>Kogus :</strong> <%= @stock.quantity %><br /></p>
+<p><strong>Protsent: </strong> $<%= @stock.percent %><br /></p>
+<p><strong>Aastad: </strong> $<%= @stock.years %><br /></p>
+<hr />
+<% if @calculations.blank? %>
+<p>No calculations</p>
+<% else %>
+<ul id="calculations">
+<% @calculations.each_with_index do |c, index| %>
+<%= index -%> - <%= c.calc -%><br />
+<% end %>
+</ul>
+<% end %>
+<%= link_to 'Back', {:action => 'list'} %>
