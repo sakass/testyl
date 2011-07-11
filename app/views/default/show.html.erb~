@@ -21,7 +21,7 @@
       data.addColumn('string', 'Years');
       data.addColumn('number', 'Price');
       <% @calculations.each_with_index do |c, index| %>
-      data.addRow([['<%= index -%>', <%= c.calc -%>]]);
+      data.addRow(['<%= index -%>', <%= c.calc -%>]);
       <% end %>
       // Instantiate and draw our chart, passing in some options.
       var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));

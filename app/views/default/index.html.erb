@@ -1,6 +1,7 @@
 <% if @stocks.blank? %>
-<p>Pole yhtegi aksiat lisatud</p>
+<p>Pole yhtegi aktsiat lisatud</p>
 <% else %>
+<p><u>Olemas olevad aktsiad:</u></p>
 <ul id="stocks">
 <% @stocks.each do |c| %>
 <li><%= link_to c.title, {:action => 'show', :id => c.id} -%></li>
@@ -23,7 +24,7 @@
 <p><label for="stock_years">aastad</label>:
 <%= text_field 'stock', 'years' %></p>
 
-<%= submit_tag "Create" %>
+<%= submit_tag "Lisa" %>
 
 <% end  %>
 
