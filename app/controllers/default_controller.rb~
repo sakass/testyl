@@ -4,16 +4,22 @@ class DefaultController < ApplicationController
    end
    def show
 	@stock = Stock.find(params[:id])
-	@calculations = Calculation.find(:all)
-	g = Gruff::Line.new #Define a New Graph
-	g.title = "My Graph" #Title for the Graph
-	g.data("Apples", [1, 2, 3, 4, 4, 3]) #Graph Data
-	g.data("Oranges", [4, 8, 7, 9, 8, 9])
-	g.data("Watermelon", [2, 3, 1, 5, 6, 8])
-	g.data("Peaches", [9, 9, 10, 8, 7, 9])
-	g.labels = {0 => '2003', 2 => '2004', 4 => '2005'} #Labels for Each of the Graph
-	send_data(g.to_blob, :disposition => 'inline', :type => 'image/png', :filename => "arbitaryfilename.png")
+	@calculations = Calculation.find(:all, :conditions => ['stock_id = ?', params[:id]])
+	    require 'googlecharts'
+	    Gchart.line(  :size => '200x300', 
+                  :title => "example title",
+                  :bg => 'efefef',
+                  :legend => ['first data set label', 'second data set label'],
+                  :data => [10, 30, 120, 45, 72])
 
+	#g = Gruff::Line.new #Define a New Graph
+	#g.title = "My Graph" #Title for the Graph
+	#g.data("Apples", [1, 2, 3, 4, 4, 3]) #Graph Data
+	#g.data("Oranges", [4, 8, 7, 9, 8, 9])
+	##g.data("Watermelon", [2, 3, 1, 5, 6, 8])
+	#g.data("Peaches", [9, 9, 10, 8, 7, 9])
+	#g.labels = {0 => '2003', 2 => '2004', 4 => '2005'} #Labels for Each of the Graph
+	#send_data(g.to_blob, :disposition => 'inline', :type => 'image/png', :filename => "arbitaryfilename.png")
    end
    def new
 	@stock = Stock.new

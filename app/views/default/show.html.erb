@@ -12,5 +12,16 @@
 <%= index -%> - <%= c.calc -%><br />
 <% end %>
 </ul>
+<html>
+<head>
+
+<script src='http://www.google.com/jsapi'></script>
+</head>
+<body><br />
+<div id='chart'></div>
+<%= raw @chart.to_js('chart') %>
+</body>
+</html>
 <% end %>
 <%= link_to 'Back', {:action => 'list'} %>
+

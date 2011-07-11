@@ -9,8 +9,18 @@
 <% else %>
 <ul id="calculations">
 <% @calculations.each_with_index do |c, index| %>
-<% index -%> - <%= c.calc -%><br />
+<%= index -%> - <%= c.calc -%><br />
 <% end %>
 </ul>
+<html>
+<head>
+
+<script src='http://www.google.com/jsapi'></script>
+</head>
+<body><br />
+<div id="chart_div"></div>
+</body>
+</html>
 <% end %>
 <%= link_to 'Back', {:action => 'list'} %>
+
