@@ -31,7 +31,7 @@
 
       // Create our data table.
       var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Years');
+      data.addColumn('string', <%= @stock.title %>);
       data.addColumn('number', 'Price');
       data.addRows([
         ['Mushrooms', 3],
