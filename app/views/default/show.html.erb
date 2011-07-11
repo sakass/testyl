@@ -1,17 +1,4 @@
 <h1><%= @stock.title %></h1>
-<p><strong>Hind: </strong> $<%= @stock.price %><br /></p>
-<strong>Kogus :</strong> <%= @stock.quantity %><br /></p>
-<p><strong>Protsent: </strong> $<%= @stock.percent %><br /></p>
-<p><strong>Aastad: </strong> $<%= @stock.years %><br /></p>
-<hr />
-<% if @calculations.blank? %>
-<p>No calculations</p>
-<% else %>
-<ul id="calculations">
-<% @calculations.each_with_index do |c, index| %>
-<%= index -%> - <%= c.calc -%><br />
-<% end %>
-</ul>
 <html>
 <head>
  <!--Load the AJAX API-->
@@ -31,16 +18,11 @@
 
       // Create our data table.
       var data = new google.visualization.DataTable();
-      data.addColumn('string', <%= @stock.title %>);
+      data.addColumn('string', 'Years');
       data.addColumn('number', 'Price');
-      data.addRows([
-        ['Mushrooms', 3],
-        ['Onions', 1],
-        ['Olives', 1], 
-        ['Zucchini', 1],
-        ['Pepperoni', 2]
-      ]);
-
+      <% @calculations.each_with_index do |c, index| %>
+      data.addRow(['<%= index -%>', <%= c.calc -%>]);
+      <% end %>
       // Instantiate and draw our chart, passing in some options.
       var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
       chart.draw(data, {width: 400, height: 240});
@@ -51,5 +33,19 @@
 <div id="chart_div"></div>
 </body>
 </html>
+<p><strong>Hind: </strong> $<%= @stock.price %><br /></p>
+<strong>Kogus :</strong> <%= @stock.quantity %><br /></p>
+<p><strong>Protsent: </strong> $<%= @stock.percent %><br /></p>
+<p><strong>Aastad: </strong> $<%= @stock.years %><br /></p>
+<hr />
+<% if @calculations.blank? %>
+<p>No calculations</p>
+<% else %>
+<ul id="calculations">
+<% @calculations.each_with_index do |c, index| %>
+<%= index -%> - <%= c.calc -%><br />
+<% end %>
+</ul>
+
 <% end %>
 <%= link_to 'Back', {:action => 'list'} %>
