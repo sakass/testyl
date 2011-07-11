@@ -1,8 +1,9 @@
 Testyl::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
- match ':controller/:action'
- match ':controller(/:action(/:id(.:format)))', :action => "list", :controller => "default"  
+    match ':controller(/:action(/:id(.:format)))'
+  match ':controller/:action' , :action => "list", :controller => "default"  
+     
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

@@ -7,7 +7,7 @@
 <% end %>
 </ul>
 <% end %>
-<%= form_tag( { :action => 'create' } ) do %>
+<%= form_tag :action => 'create' do %>
 <p><label for="stock_title">aktsia nimi</label>:
 <%= text_field 'stock', 'title' %></p>
 
