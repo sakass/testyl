@@ -5,20 +5,26 @@ class DefaultController < ApplicationController
    def show
 	@stock = Stock.find(params[:id])
 	@calculations = Calculation.find(:all, :conditions => ['stock_id = ?', params[:id]])
-	data_table = GoogleVisualr::DataTable.new
-data_table.new_column('string', 'Year' ) 
-data_table.new_column('number', 'Sales') 
-data_table.new_column('number', 'Expenses') 
-
-# Add Rows and Values 
-data_table.add_rows([ 
-  ['2004', 1000, 400], 
-  ['2005', 1170, 460], 
-  ['2006', 660, 1120], 
-  ['2007', 1030, 540] 
-])
-option = { width: 400, height: 240, title: 'Company Performance' }
-@chart = GoogleVisualr::Interactive::AreaChart.new(data_table, option)
+# 	@chart = GoogleVisualr::Interactive::AreaChart.new
+# 	# Add Column Headers
+# 	@chart.add_column('string', 'Year' )
+# 	@chart.add_column('number', 'Sales')
+# 	@chart.add_column('number', 'Expenses')
+# 	# Add Rows and Values
+# 	@chart.add_rows(4)
+# 	@chart.set_value(0, 0, '2004')
+# 	@chart.set_value(0, 1, 1000)
+# 	@chart.set_value(0, 2, 400)
+# 	@chart.set_value(1, 0, '2005')
+# 	@chart.set_value(1, 1, 1170)
+# 	@chart.set_value(1, 2, 460)
+# 	@chart.set_value(2, 0, '2006')
+# 	@chart.set_value(2, 1, 1500)
+# 	@chart.set_value(2, 2, 660)
+# 	@chart.set_value(3, 0, '2007')
+# 	@chart.set_value(3, 1, 1030)
+# 	@chart.set_value(3, 2, 540)
+  end
 	#g = Gruff::Line.new #Define a New Graph
 	#g.title = "My Graph" #Title for the Graph
 	#g.data("Apples", [1, 2, 3, 4, 4, 3]) #Graph Data
@@ -27,7 +33,7 @@ option = { width: 400, height: 240, title: 'Company Performance' }
 	#g.data("Peaches", [9, 9, 10, 8, 7, 9])
 	#g.labels = {0 => '2003', 2 => '2004', 4 => '2005'} #Labels for Each of the Graph
 	#send_data(g.to_blob, :disposition => 'inline', :type => 'image/png', :filename => "arbitaryfilename.png")
-   end
+   
    def new
 	@stock = Stock.new
 	
