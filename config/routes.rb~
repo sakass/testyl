@@ -3,12 +3,10 @@ Testyl::Application.routes.draw do
   # first created -> highest priority.
   #match 'products/:id', :to => 'catalog#view'
   #match ':controller/:action' , :action => "list", :controller => "default"  
-  #match '/:controller/', :to => 'default#list'
-  #match "/default/", :to => redirect("/default/list")
+ 
+  #root :to => 'default#index'
+  #match '/:controller(/:action(/:id))'
   
-  match '/:controller(/:action(/:id))'
-
-  root :to => 'default#list'
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

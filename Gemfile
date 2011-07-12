@@ -4,7 +4,6 @@ source 'http://rubygems.org'
 
 # Bundle edge Rails instead:
  gem 'rails',  :git => 'git@github.com:rails/rails.git'
- gem "google_visualr", "~> 2.0.3"
 
 gem 'pg'
 # Use unicorn as the web server
