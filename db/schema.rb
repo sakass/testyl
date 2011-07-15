@@ -14,7 +14,9 @@ ActiveRecord::Schema.define(:version => 20110708163415) do
 
   create_table "calculations", :force => true do |t|
     t.integer "calc"
+    t.integer "stock_id"
   end
+
 
   create_table "stocks", :force => true do |t|
     t.string   "title",      :limit => 32, :null => false
